@@ -80,6 +80,9 @@ resource "aws_cloudfront_distribution" "cf" {
     minimum_protocol_version = "TLSv1.3_2025"
     ssl_support_method       = "sni-only"
   }
+
+  // For WAF
+  web_acl_id = aws_wafv2_web_acl.waf.arn
 }
 
 resource "aws_cloudfront_origin_access_identity" "cf_s3_origin_access_identity" {
