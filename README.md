@@ -1,14 +1,14 @@
 // Cording_Samples<br>
-Cording_Samples is directory which shows my-skills and learning-history.
-If you are recruiter, check this directory.
+Cording_Samples is directory which shows my-skills and learning-history.<br>
+If you are recruiter, check this directory.<br>
 Sometime you want image its working, then also check Image directory.
 
-// Image<br>
-Image is directory which could make you imagine "How this cording-program wil be working"
+// Images<br>
+Images is directory which could make you imagine "How this cording-program wil be working"<br>
 
-// Product<br>
-If you want programs itself, get it in this directory.
+// Products<br>
+If you want programs itself, get it in this directory.<br>
 
 // Chemical Plant<br>
-My major was fluid-analysis and thermal engineering.
+My major was fluid-analysis and thermal engineering.<br>
 Chemical plant scheme is one of my-gallery.
