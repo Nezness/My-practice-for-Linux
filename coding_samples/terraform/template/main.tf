@@ -11,7 +11,7 @@ terraform {
   }
   backend "s3" {
     bucket  = "Put your bucket name" # Notioce
-    key     = "${var.project}-{var.environment}.tfstate"
+    key     = "${var.project}-${var.environment}.tfstate"
     region  = "ap-northeast-1"
     profile = "terraform"
   }
@@ -46,3 +46,4 @@ variable "domain" {
   type = string
 
 }
+
