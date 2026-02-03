@@ -44,6 +44,18 @@ data "aws_iam_policy_document" "lambda_permissions_s3_to_textract" {
       "${aws_s3_bucket.s3_static_bucket.arn}/*"
     ]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "dynamodb:PutItem",
+      "dynamodb:GetItem",
+      "dynamodb:UpdateItem"
+    ]
+    resources = [
+      aws_dynamodb_table.receipts.arn
+    ]
+  }
 }
 
 #-------------------------
