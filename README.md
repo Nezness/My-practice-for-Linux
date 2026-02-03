@@ -54,4 +54,3 @@ Chemical Plant/ Projects related to my university major (Fluid and Thermal Engin
 ## Education & Certifications
 - Tokyo Institute of Technology (Bachelor of Engineering)
 - AWS Certified Solutions Architect – Associate (SAA)
-- Tokyo Institute of Technology (Bachelor of Engineering)
