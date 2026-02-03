@@ -10,7 +10,13 @@ terraform {
   }
 }
 
-// provider is on profile.tf(hidden)
+#-------------------------
+# Provider
+#-------------------------
+provider "aws" {
+  profile = "${var.profile}"
+  region  = "${var.region}"
+}
 
 #-------------------------
 # Variables
@@ -24,6 +30,14 @@ variable "environment" {
 }
 
 variable "domain" {
+  type = string
+}
+
+variable "profile" {
+  type = string
+}
+
+variable "region" {
   type = string
 }
 
