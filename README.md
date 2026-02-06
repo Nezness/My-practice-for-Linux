@@ -24,7 +24,6 @@
 
 ## 連絡先
 - GitHub: https://github.com/Nezness  
-- Email: yakuhai1000@gmail.com
 - LinkedIn: www.linkedin.com/in/zen-soma-69a32739b
 
 ## 資格・学歴
@@ -48,7 +47,6 @@ Chemical Plant/ Projects related to my university major (Fluid and Thermal Engin
 
 ## Contact
 - GitHub: https://github.com/Nezness
-- Email: yakuhai1000@gmail.com
 - LinkedIn: www.linkedin.com/in/zen-soma-69a32739b
 
 ## Education & Certifications
