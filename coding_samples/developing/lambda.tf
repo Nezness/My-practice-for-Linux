@@ -14,5 +14,5 @@ resource "aws_lambda_function" "s3_to_textract" {
   handler          = "index.handler"                             // program-name.handler
   runtime          = "python3.12"
   source_code_hash = data.archive_file.lambda_s3_to_textract_zip.output_base64sha256
-  timeout          = 30
+  timeout          = 60
 }

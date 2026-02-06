@@ -59,29 +59,31 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_static_bucket" {
 resource "aws_s3_bucket_notification" "s3_static_bucket" {
   bucket = aws_s3_bucket.s3_static_bucket.id
 
-  # JPG
-  lambda_function {
-    lambda_function_arn = aws_lambda_function.s3_to_textract.arn
-    events              = ["s3:ObjectCreated:*"]
-    filter_prefix       = "users/"
-    filter_suffix       = ".jpg"
-  }
+  queue {
+      queue_arn     = aws_sqs_queue.receipt_queue.arn
+      events        = ["s3:ObjectCreated:*"]
+      filter_prefix = "users/"
+      filter_suffix = ".jpg"
+    } 
 
-  # JPEG
-  lambda_function {
-    lambda_function_arn = aws_lambda_function.s3_to_textract.arn
-    events              = ["s3:ObjectCreated:*"]
-    filter_prefix       = "users/"
-    filter_suffix       = ".jpeg"
-  }
+  queue {
+      queue_arn     = aws_sqs_queue.receipt_queue.arn
+      events        = ["s3:ObjectCreated:*"]
+      filter_prefix = "users/"
+      filter_suffix = ".JPG"
+    }      
 
-  # PNG
-  lambda_function {
-    lambda_function_arn = aws_lambda_function.s3_to_textract.arn
-    events              = ["s3:ObjectCreated:*"]
-    filter_prefix       = "users/"
-    filter_suffix       = ".png"
-  }
+  queue {
+      queue_arn     = aws_sqs_queue.receipt_queue.arn
+      events        = ["s3:ObjectCreated:*"]
+      filter_prefix = "users/"
+      filter_suffix = ".png"
+    }
 
-  depends_on = [aws_lambda_permission.allow_s3_to_invoke_lambda]
+  queue {
+      queue_arn     = aws_sqs_queue.receipt_queue.arn
+      events        = ["s3:ObjectCreated:*"]
+      filter_prefix = "users/"
+      filter_suffix = ".PNG"
+    }     
 }

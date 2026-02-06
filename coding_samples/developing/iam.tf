@@ -26,10 +26,17 @@ data "aws_iam_policy_document" "lambda_permissions_s3_to_textract" {
   statement {
     effect = "Allow"
     actions = [
-      "textract:AnalyzeExpense",
+      "textract:DetectDocumentText",
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
+      "bedrock:InvokeModel",
+      "aws-marketplace:ViewSubscriptions",
+      "aws-marketplace:Subscribe",
+      "aws-marketplace:Unsubscribe",
+      "sqs:ReceiveMessage",
+      "sqs:DeleteMessage",
+      "sqs:GetQueueAttributes"
     ]
     resources = ["*"]
   }
@@ -69,12 +76,4 @@ resource "aws_iam_policy" "lambda_policy_s3_to_textract" {
 resource "aws_iam_role_policy_attachment" "lambda-policy-attachment-s3-to-textract" {
   role       = aws_iam_role.Lambda_role_s3_to_textract.name
   policy_arn = aws_iam_policy.lambda_policy_s3_to_textract.arn
-}
-
-resource "aws_lambda_permission" "allow_s3_to_invoke_lambda" {
-  statement_id  = "AllowS3Invoke"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.s3_to_textract.function_name
-  principal     = "s3.amazonaws.com"
-  source_arn    = aws_s3_bucket.s3_static_bucket.arn
 }

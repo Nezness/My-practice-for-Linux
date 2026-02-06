@@ -40,4 +40,3 @@ variable "profile" {
 variable "region" {
   type = string
 }
-

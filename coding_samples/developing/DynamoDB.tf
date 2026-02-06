@@ -87,6 +87,29 @@ resource "aws_dynamodb_table" "user_budgets" {
   }
 }
 
+# UserBudget management table
+resource "aws_dynamodb_table" "users" {
+  name         = "Users"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "user_id"
+
+  attribute {
+    name = "user_id"
+    type = "S"
+  }
+
+  server_side_encryption {
+    enabled = true
+  }
+
+  tags = {
+    Name        = "UserBudgets"
+    Environment = var.environment
+    Project     = var.project
+    ManagedBy   = "Terraform"
+  }
+}
+
 # Outputs
 output "dynamodb_receipts_table_name" {
   value       = aws_dynamodb_table.receipts.name
