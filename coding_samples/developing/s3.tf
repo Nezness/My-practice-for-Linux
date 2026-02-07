@@ -60,30 +60,42 @@ resource "aws_s3_bucket_notification" "s3_static_bucket" {
   bucket = aws_s3_bucket.s3_static_bucket.id
 
   queue {
-      queue_arn     = aws_sqs_queue.receipt_queue.arn
-      events        = ["s3:ObjectCreated:*"]
-      filter_prefix = "users/"
-      filter_suffix = ".jpg"
-    } 
+    queue_arn     = aws_sqs_queue.receipt_queue.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_prefix = "users/"
+    filter_suffix = ".jpg"
+  }
 
   queue {
-      queue_arn     = aws_sqs_queue.receipt_queue.arn
-      events        = ["s3:ObjectCreated:*"]
-      filter_prefix = "users/"
-      filter_suffix = ".JPG"
-    }      
+    queue_arn     = aws_sqs_queue.receipt_queue.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_prefix = "users/"
+    filter_suffix = ".JPG"
+  }
 
   queue {
-      queue_arn     = aws_sqs_queue.receipt_queue.arn
-      events        = ["s3:ObjectCreated:*"]
-      filter_prefix = "users/"
-      filter_suffix = ".png"
-    }
+    queue_arn     = aws_sqs_queue.receipt_queue.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_prefix = "users/"
+    filter_suffix = ".png"
+  }
 
   queue {
-      queue_arn     = aws_sqs_queue.receipt_queue.arn
-      events        = ["s3:ObjectCreated:*"]
-      filter_prefix = "users/"
-      filter_suffix = ".PNG"
-    }     
+    queue_arn     = aws_sqs_queue.receipt_queue.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_prefix = "users/"
+    filter_suffix = ".PNG"
+  }
+}
+
+resource "aws_s3_bucket_cors_configuration" "receipt_bucket_cors" {
+  bucket = aws_s3_bucket_notification.s3_static_bucket.id
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["PUT", "POST", "GET"]
+    allowed_origins = ["*"] # Put domain frontend has
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+  }
 }

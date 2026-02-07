@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "receipt_queue_policy_doc" {
 
 resource "aws_lambda_event_source_mapping" "sqs_trigger" {
   event_source_arn = aws_sqs_queue.receipt_queue.arn
-  function_name = aws_lambda_function.s3_to_textract.arn
-  batch_size = 1
-  enabled = true
+  function_name    = aws_lambda_function.s3_to_textract.arn
+  batch_size       = 1
+  enabled          = true
 }
